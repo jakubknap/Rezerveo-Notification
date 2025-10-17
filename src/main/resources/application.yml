@@ -1,1 +1,33 @@
-spring.application.name=RezerveoNotification
+server:
+  port: 8081
+
+spring:
+  application:
+    name: rezerveo-notification
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        acknowledge-mode: auto
+        default-requeue-rejected: false
+  mail:
+    host: localhost
+    port: 1025
+    username: mail-dev
+    password: mail-dev
+
+application:
+  security:
+    encryption:
+      key: iw+u+4LQ3U+M7xqQbNi7Q449b68k2r4gOljpSTTguJg=
+  mail:
+    enabled: true
+    sender-mail: no-reply@rezerveo.pl
+    sender-name: Rezerveo
+  frontend:
+    base-url: http://localhost:4200
+    activation-account-url: ${application.frontend.base-url}/active-account
+    reset-password-url: ${application.frontend.base-url}/reset-password
